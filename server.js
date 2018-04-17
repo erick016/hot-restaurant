@@ -1,3 +1,4 @@
+
 // Dependencies
 // =============================================================
 var express = require("express");
@@ -17,26 +18,14 @@ app.use(bodyParser.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var characters = [
-  {
-    resName: "James",
-    name: "Erickson",
-    time: "10:00 AM",
-    day: "Monday"
-  },
-  {
-    resName: "Hamed",
-    name: "Rohani",
-    time: "12:00 PM",
-    day: "Tuesday",
-  },
-  {
-    resName: "Chris",
-    name: "Kenoyer",
-    time: "2:30 PM",
-    day: "Wednesday"
-  }
-];
+var reservations = ["clayton", "chris"];
+var waitinglist = [];
+waitinglist.push("Hammed");
+
+// for (i = 0; i < 5; i++) {
+
+
+// }
 
 // Routes
 // =============================================================
@@ -59,6 +48,17 @@ app.get("/api/reservation", function(req, res) {
   return res.json(characters);
 });
 
+// Displays all reservations
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitinglist);
+});
+
+// Displays all reservations
+app.get("/api/showTables", function(req, res) {
+    return res.json(reservations);
+});
+
+
 // Displays a single character, or returns false
 //app.get("/api/reservation/:reservation", function(req, res) {
 //  var chosen = req.params.reservation;
@@ -75,7 +75,7 @@ app.get("/api/reservation", function(req, res) {
 //});
 
 // Create New Characters - takes in JSON input
-app.post("/api/reservation", function(req, res) {
+app.post("/api/makeres", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newres = req.body;
@@ -85,10 +85,13 @@ app.post("/api/reservation", function(req, res) {
   newres.routeName = newres.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newres);
-
-  characters.push(newres);
-
-  res.json(newres);
+if(reservations.length>5){
+    res.send(false);
+}else{
+  reservations.push(newres);
+    res.send(true);
+}
+//   res.json(newres);
 });
 
 // Starts the server to begin listening

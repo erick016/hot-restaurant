@@ -44,11 +44,11 @@
                 <input type="text" class="form-control" id="reserve-name">
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="reserve-phone">Phone Number</label>
                 <input type="text" class="form-control" id="reserve-phone">
               </div>
-
+              
               <div class="form-group">
                 <label for="reserve-email">Email</label>
                 <input type="text" class="form-control" id="reserve-email">
@@ -57,7 +57,7 @@
               <div class="form-group">
                 <label for="reserve-unique-id">Unique ID</label>
                 <input type="text" class="form-control" id="reserve-unique-id">
-              </div>
+              </div> -->
 
               <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
@@ -92,13 +92,13 @@
       event.preventDefault();
 
       // Here we grab the form elements
-      var newReservation = {
-        customerName: $("#reserve-name").val().trim(),
-        phoneNumber: $("#reserve-phone").val().trim(),
-        customerEmail: $("#reserve-email").val().trim(),
-        customerID: $("#reserve-unique-id").val().trim()
-      };
-
+      // var newReservation = {
+      //   customerName: $("#reserve-name").val().trim(),
+      //   phoneNumber: $("#reserve-phone").val().trim(),
+      //   //customerEmail: $("#reserve-email").val().trim(),
+      //   //customerID: $("#reserve-unique-id").val().trim()
+      // };
+      var newReservation = [customerName: $("#reserve-name").val().trim()];
       console.log(newReservation);
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
@@ -106,7 +106,7 @@
       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
       // depending on if a tables is available or not.
 
-      $.post("/api/tables", newReservation,
+      $.post("/api/makeres", newReservation,
         function(data) {
 
           // If a table is available... tell user they are booked.
@@ -122,8 +122,8 @@
           // Clear the form when submitting
           $("#reserve-name").val("");
           $("#reserve-phone").val("");
-          $("#reserve-email").val("");
-          $("#reserve-unique-id").val("");
+          //$("#reserve-email").val("");
+          //$("#reserve-unique-id").val("");
 
         });
 
