@@ -18,9 +18,13 @@ app.use(bodyParser.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var reservations = ["clayton", "chris"];
+var reservations = [
+{name: "clayton"}, 
+{name:"chris"}
+];
+
 var waitinglist = [];
-waitinglist.push("Hammed");
+waitinglist.push({name:"Hammed"});
 
 // for (i = 0; i < 5; i++) {
 
@@ -80,15 +84,21 @@ app.post("/api/makeres", function(req, res) {
   // This works because of our body-parser middleware
   var newres = req.body;
 
+  console.log(newres);
+
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newres.routeName = newres.name.replace(/\s+/g, "").toLowerCase();
+  newres.name = newres.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newres);
-if(reservations.length>5){
+  console.log(reservations.length);
+
+if(reservations.length>4)   {
+    waitinglist.push(newres);
+
     res.send(false);
 }else{
-  reservations.push(newres);
+    reservations.push(newres);
     res.send(true);
 }
 //   res.json(newres);
