@@ -44,7 +44,9 @@
                 <input type="text" class="form-control" id="reserve-name" required>
               </div>
 
+
               <!-- <div class="form-group">
+
                 <label for="reserve-phone">Phone Number</label>
                 <input type="text" class="form-control" id="reserve-phone" required>
               </div>
@@ -94,18 +96,24 @@
       event.preventDefault();
 
       // Here we grab the form elements
+
       // var newReservation = {
       //   customerName: $("#reserve-name").val().trim(),
       //   phoneNumber: $("#reserve-phone").val().trim(),
       //   //customerEmail: $("#reserve-email").val().trim(),
       //   //customerID: $("#reserve-unique-id").val().trim()
       // };
+<<<<<<< HEAD
       var newReservation = {
         name: $("#reserve-name").val().trim(),
         //phoneNumber: $("#reserve-phone").val().trim(),
         //email: $("#reserve-email").val().trim(),
         //reserveTime: $("#reserve-email").val().trim(),
       };
+=======
+      var newReservation = [customerName: $("#reserve-name").val().trim()];
+
+>>>>>>> efd9d2e73e87a476e4c4794cbeb2025156e822b2
       console.log(newReservation);
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
@@ -128,9 +136,15 @@
 
           // Clear the form when submitting
           $("#reserve-name").val("");
+<<<<<<< HEAD
           //$("#reserve-phone").val("");
+=======
+
+          $("#reserve-phone").val("");
+>>>>>>> efd9d2e73e87a476e4c4794cbeb2025156e822b2
           //$("#reserve-email").val("");
           //$("#reserve-unique-id").val("");
+
 
         });
 
