@@ -23,7 +23,7 @@
 
       <div class="text-center">
         <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-        <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+        <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span>Home!</button></a>
       </div>
     </div>
 
@@ -102,7 +102,7 @@
 
 
             // Then display the remaining fields in the HTML (Section Name, Date, URL)
-            $("#tableWell-" + i + 1).append("<h2><span class='label label-primary'>" + tableNumber + "</span> | " + tableData[i] + "</h2>");
+            $("#tableWell-" + i + 1).append("<h2><span class='label label-primary'>" + tableNumber + "</span> | " + tableData[i].name + "</h2>");
           }
         });
     }
@@ -138,7 +138,7 @@
             var tableNumber = i + 1;
 
             // Then display the remaining fields in the HTML (Section Name, Date, URL)
-            $("#waitlistWell-" + i + 1).append("<h2><span class='label label-primary'>" + tableNumber + "</span> | " + waitlistData[i] + "</h2>");
+            $("#waitlistWell-" + i + 1).append("<h2><span class='label label-primary'>" + tableNumber + "</span> | " + waitlistData[i].name + "</h2>");
           }
         });
     }
